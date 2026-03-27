@@ -1,0 +1,13 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+user_data/
+*.log
+data/historical/
+data/features/
+backtesting/reports/*.json
+backtesting/reports/*.csv
+.DS_Store

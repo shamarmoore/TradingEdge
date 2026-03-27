@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  freqtrade:
+    image: freqtradeorg/freqtrade:stable
+    restart: unless-stopped
+    container_name: cryptoedge
+    volumes:
+      - ./user_data:/freqtrade/user_data
+      - ./strategies:/freqtrade/user_data/strategies
+    ports:
+      - "8080:8080"
+    command: >
+      trade
+      --config /freqtrade/user_data/config.json
+      --strategy EnsembleStrategy
+    environment:
+      - FREQTRADE__EXCHANGE__KEY=${EXCHANGE_KEY}
+      - FREQTRADE__EXCHANGE__SECRET=${EXCHANGE_SECRET}
+      - FREQTRADE__TELEGRAM__CHAT_ID=${TELEGRAM_CHAT_ID}
+      - FREQTRADE__TELEGRAM__TOKEN=${TELEGRAM_TOKEN}
